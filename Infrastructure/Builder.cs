@@ -14,7 +14,8 @@ namespace Infrastructure
         public abstract void CreateCryptographer(ICryptographer cryptographer);
 
         // Методы, которые строят части продукта
-        public abstract void BuildInputFilter(IInputFilter inputFilter);
+        public abstract void BuildKeyFilter(IFilter keyFilter);
+        public abstract void BuildSourceFilter(IFilter keyFilter);
         public abstract void BuildValidator(IValidator validator);
         public abstract void BuildСrypter(ICrypter crypter);
 

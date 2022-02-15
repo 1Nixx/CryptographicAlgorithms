@@ -8,6 +8,6 @@ namespace Core.Interfaces
 {
 	public interface IValidator
 	{
-
+		void Validate();
 	}
 }

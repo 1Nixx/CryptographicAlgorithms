@@ -8,9 +8,13 @@ namespace Core.Interfaces
 {
 	public interface ICryptographer
 	{
-		IInputFilter? InputFilter { get; set; }
+		IFilter? KeyFilter { get; set; }
+		IFilter? SourceFilter { get; set; }
 		IValidator? Validator { get; set; }
 		ICrypter? Crypter { get; set; }
-		string StartCrypting();
+
+		bool PrepareData();
+		string Crypting();
+		string Decrypting();
 	}
 }

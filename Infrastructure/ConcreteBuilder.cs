@@ -17,11 +17,18 @@ namespace Infrastructure
 			currentBuilder = cryptographer;
 		}
 
-		public override void BuildInputFilter(IInputFilter inputFilter)
+		public override void BuildKeyFilter(IFilter keyFilter)
 		{
 			if (currentBuilder is null)
 				throw new ArgumentNullException(nameof(currentBuilder));
-			currentBuilder.InputFilter = inputFilter;
+			currentBuilder.KeyFilter = keyFilter;
+		}
+
+		public override void BuildSourceFilter(IFilter sourceFilter)
+		{
+			if (currentBuilder is null)
+				throw new ArgumentNullException(nameof(currentBuilder));
+			currentBuilder.SourceFilter = sourceFilter;
 		}
 
 		public override void BuildValidator(IValidator validator)
