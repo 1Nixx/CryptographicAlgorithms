@@ -25,5 +25,11 @@ namespace TILabs
 			InitializeComponent();
 		}
 
+		private void btnTask1_Click(object sender, RoutedEventArgs e)
+		{
+			var lab1Window = new Lab1Window(this);
+			this.Hide();
+			lab1Window.Show();
+		}
 	}
 }

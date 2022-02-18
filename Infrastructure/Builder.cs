@@ -14,10 +14,10 @@ namespace Infrastructure
         public abstract void CreateCryptographer(ICryptographer cryptographer);
 
         // Методы, которые строят части продукта
-        public abstract void BuildKeyFilter(IFilter keyFilter);
-        public abstract void BuildSourceFilter(IFilter keyFilter);
-        public abstract void BuildValidator(IValidator validator);
-        public abstract void BuildСrypter(ICrypter crypter);
+        internal abstract void BuildKeyFilter(IFilter keyFilter);
+        internal abstract void BuildSourceFilter(IFilter keyFilter);
+        internal abstract void BuildValidator(IValidator validator);
+        internal abstract void BuildСrypter(ICrypter crypter);
 
         // Метод, возвращающий продукт клиенту
         public abstract ICryptographer GetCryptographer();
