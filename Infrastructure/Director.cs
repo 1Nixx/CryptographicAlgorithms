@@ -62,7 +62,7 @@ namespace Infrastructure
 			_builder.BuildСrypter(new DecimationCrypter(cryptInfo));
 		}
 
-		public void ConstructLFSRCrypt(string registerSource, string polynomial, byte[] sourceData)
+		public void ConstructLFSRMethod(string registerSource, string polynomial, byte[] sourceData)
 		{
 			var sourceKey = new LFSRSourceKey() { Polynomial = polynomial, ShiftSource = registerSource };
 			var sourceInfo = new CryptingInfo<byte[], LFSRSourceKey>("01", sourceKey, sourceData);

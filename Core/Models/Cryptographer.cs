@@ -40,9 +40,9 @@ namespace Core.Models
 				if (Validator is not null)
 					Validator.Validate();
 			}
-			catch (ArgumentException)
+			catch (ArgumentException ex)
 			{
-				return false;
+				throw;
 			}
 			catch (NullReferenceException)
 			{

@@ -19,7 +19,7 @@
         <Button x:Name="btnTask2" Content="Задание 2" HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center" FontSize="25" FontWeight="Normal"
             Background="#FF9FB89B" BorderBrush="#FF9FB89B" Foreground="#FFA54149" 
-            Click="btnTask1_Click" Width="278" Height="38" Margin="0,30,0,0" Padding="0"/>
+            Click="btnTask2_Click" Width="278" Height="38" Margin="0,30,0,0" Padding="0"/>
         <Button x:Name="btnTask3" Content="Задание 3" HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center" FontSize="25" FontWeight="Normal"
             Background="#FF9FB89B" BorderBrush="#FF9FB89B" Foreground="#FFA54149" 

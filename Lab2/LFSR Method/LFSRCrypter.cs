@@ -20,20 +20,22 @@ namespace Lab2.LFSR_Method
 		public LFSRCrypter(CryptingInfo<byte[], LFSRKey> crypterInfo)
 		{
 			_cryptingInfo = crypterInfo;
-			_shiftRegister = new(crypterInfo.Key);
+			
 		}
 
 		public object CryptData()
 		{
+			_shiftRegister = new(_cryptingInfo.Key);
 			return StartCrypting();
 		}
 
 		public object DecryptData()
 		{
+			_shiftRegister = new(_cryptingInfo.Key);
 			return StartCrypting();
 		}
 
-		private byte[] StartCrypting()
+		private (byte[] result, byte[] key) StartCrypting()
 		{
 			var keyBits = _shiftRegister.CalculateFinalKey(_cryptingInfo.Source.Length);
 			var keyByte = keyBits.ToBytes();
@@ -42,7 +44,7 @@ namespace Lab2.LFSR_Method
 			for (int i = 0; i < sourceByte.Length; i++)
 				sourceByte[i] ^= keyByte[i];
 			
-			return sourceByte;
+			return (sourceByte, keyByte);
 		}
 	}
 

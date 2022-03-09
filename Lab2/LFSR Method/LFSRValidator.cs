@@ -16,7 +16,7 @@ namespace Lab2.LFSR_Method
 		public void Validate()
 		{
 			if (KeyResult.Key.RegisterLength != SourceData.Key.ShiftSource.Length)
-				throw new ArgumentException("Incorrect length of register");
+				throw new ArgumentException($"Incorrect length {SourceData.Key.ShiftSource.Length} of register");
 		}
 	}
 }

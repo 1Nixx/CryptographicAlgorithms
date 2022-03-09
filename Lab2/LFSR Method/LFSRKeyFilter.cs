@@ -27,7 +27,7 @@ namespace Lab2.LFSR_Method
 			SourceData.Key.ShiftSource.Trim();
 			for (int i = 0; i < SourceData.Key.ShiftSource.Length; i++)
 				if (!SourceData.Alphabet.Contains(SourceData.Key.ShiftSource[i]))
-					throw new ArgumentException("Shift source error");
+					throw new ArgumentException($"Shift source error. Pos {i+1}");
 
 			KeyResult.Key.ShiftSource = Convert.ToInt64(SourceData.Key.ShiftSource, 2);
 		}
