@@ -10,7 +10,7 @@ namespace Lab1.Default
 {
 	public class DefaultValidator: IValidator
 	{
-		public virtual CryptingInfo<string> Info { get; set; }
+		public virtual CryptingInfo<string, string> Info { get; set; }
 		public virtual void Validate()
 		{
 			if (Info is null)

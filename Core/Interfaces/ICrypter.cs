@@ -8,7 +8,7 @@ namespace Core.Interfaces
 {
 	public interface ICrypter
 	{
-		string CryptData();
-		string DecryptData();
+		object CryptData();
+		object DecryptData();
 	}
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Lab1.Default
 {
-	public class DefaultSourceFilter<T> : IFilter
+	public class DefaultSourceStringFilter<TKey> : IFilter
 	{
-		public CryptingInfo<T> Info { get; set; }
+		public CryptingInfo<string, TKey> Info { get; set; }
 
 		public void Filter()
 		{

@@ -45,7 +45,7 @@ namespace TILabs
 			alphabetRus = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void btnExit_Click(object sender, RoutedEventArgs e)
 		{
 			_ownerWindow.Show();
 			this.Hide();
@@ -75,7 +75,7 @@ namespace TILabs
 				return;
 			}
 
-			string cryptedString = cryptographer.Crypting();
+			string cryptedString = (string)cryptographer.Crypting();
 			tbResult.Text = cryptedString;
 		}
 		private void btnDecrypt_Click(object sender, RoutedEventArgs e)
@@ -102,7 +102,7 @@ namespace TILabs
 				return;
 			}
 
-			string cryptedString = cryptographer.Decrypting();
+			string cryptedString = (string)cryptographer.Decrypting();
 			tbResult.Text = cryptedString;
 		}
 

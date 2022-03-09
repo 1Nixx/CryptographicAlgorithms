@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-	public class Cryptographer<TKey>: ICryptographer
+	public class Cryptographer<TSource, TKey>: ICryptographer
 	{
 		public IFilter? KeyFilter { get; set; }
 
@@ -17,14 +17,14 @@ namespace Core.Models
 
 		public ICrypter? Crypter { get; set; }
 
-		private CryptingInfo<TKey> CryptingInfo { get; set; }
+		private CryptingInfo<TSource, TKey> CryptingInfo { get; set; }
 
-		public Cryptographer(string alphabet, TKey key, string source)
+		public Cryptographer(string alphabet, TKey key, TSource source)
 		{
-			CryptingInfo = new CryptingInfo<TKey>(alphabet, key, source);
+			CryptingInfo = new CryptingInfo<TSource, TKey>(alphabet, key, source);
 		}
 
-		public Cryptographer(CryptingInfo<TKey> info)
+		public Cryptographer(CryptingInfo<TSource, TKey> info)
 		{
 			CryptingInfo = info;
 		}
@@ -51,12 +51,12 @@ namespace Core.Models
 			return true;
 		}
 
-		public string Crypting()
+		public object Crypting()
 		{
 			return Crypter.CryptData();
 		}
 
-		public string Decrypting()
+		public object Decrypting()
 		{
 			return Crypter.DecryptData();
 		}

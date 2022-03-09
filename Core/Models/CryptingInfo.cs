@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-	public class CryptingInfo<TKey>
+	public class CryptingInfo<TSource, TKey>
 	{
-		public CryptingInfo(string alphabet, TKey key, string source)
+		public CryptingInfo(string alphabet, TKey key, TSource source)
 		{
 			Alphabet = alphabet;
 			Key = key;
 			Source = source;
 		}
 
-		public string Alphabet { get; set; }
+		public string? Alphabet { get; set; }
 
 		public TKey Key { get; set; }
 
-		public string Source { get; set; }
+		public TSource Source { get; set; }
 	}
 }

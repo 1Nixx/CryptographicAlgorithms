@@ -10,7 +10,7 @@ namespace Lab1.Decimation_Method
 {
 	public class DecimationValidator : IValidator
 	{
-		public CryptingInfo<int> Info { get; set; }
+		public CryptingInfo<string, int> Info { get; set; }
 		public void Validate()
 		{
 			if (Info is null)
@@ -19,7 +19,7 @@ namespace Lab1.Decimation_Method
 			if (Info.Source == "")
 				throw new ArgumentException();
 
-			if (!IsCoprime(Info.Key, Info.Alphabet.Length))
+			if (Info.Key <= 0 || !IsCoprime(Info.Key, Info.Alphabet.Length))
 				throw new ArgumentException();
 		}
 

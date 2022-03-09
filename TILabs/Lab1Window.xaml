@@ -9,14 +9,14 @@
         Title="Lab1Window" Height="539" Width="884">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="270"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="270"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <materialDesign:Card Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="#C9F5C2" >
+        <materialDesign:Card Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="#C9F5C2" >
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3">
                 <ComboBox x:Name="cbCryptTypes" materialDesign:HintAssist.Hint="Шифрование" FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5" SelectionChanged="cbCryptTypes_SelectionChanged"/>
                 <TextBox x:Name="tbKey" materialDesign:HintAssist.Hint="Ключ" FontSize="18" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5"/>
@@ -25,18 +25,18 @@
                 <Button x:Name="btnLoadFromFile" Content="Открыть файл" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5" Background="#3C988E" BorderBrush="#3C988E" Click="btnLoadFromFile_Click"/>
                 <Button x:Name="btnSaveToFile" Content="Сохранить в файл" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5" Background="#3C988E" BorderBrush="#3C988E" Click="btnSaveToFile_Click"/>
                 <Label x:Name="lbError" FontSize="18" Foreground="Red" FontWeight="Bold" Visibility="Hidden" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5"/>
-                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="30" Margin="0, 168
-                        , 0, 0" Click="Button_Click" >
+                <Button x:Name="btnExit" Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="30" Margin="0, 168
+                        , 0, 0" Click="btnExit_Click" >
                     <materialDesign:PackIcon Kind="ExitRun" Width="25" Height="25" Foreground="#FF673AB7"/>
                 </Button>
             </StackPanel>
         </materialDesign:Card>
-        <materialDesign:Card Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="#B9E9E4">
+        <materialDesign:Card Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="White">
             <TextBox x:Name="tbSource" AcceptsReturn="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                      FontSize="19" materialDesign:HintAssist.Hint="Исходный текст" materialDesign:HintAssist.Foreground="AntiqueWhite" 
                      Margin="5" TextWrapping="Wrap"/>
         </materialDesign:Card>
-        <materialDesign:Card Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="#B9E9E4">
+        <materialDesign:Card Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="White">
             <TextBox x:Name="tbResult" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="19" materialDesign:HintAssist.Hint="Конечный текст"
                      materialDesign:HintAssist.Foreground="AntiqueWhite" Margin="5" TextWrapping="Wrap"/>
         </materialDesign:Card>

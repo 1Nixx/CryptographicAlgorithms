@@ -14,7 +14,7 @@ namespace Core.Interfaces
 		ICrypter? Crypter { get; set; }
 
 		bool PrepareData();
-		string Crypting();
-		string Decrypting();
+		object Crypting();
+		object Decrypting();
 	}
 }

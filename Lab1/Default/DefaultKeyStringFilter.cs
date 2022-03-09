@@ -10,7 +10,7 @@ namespace Lab1.Default
 {
 	public class DefaultKeyStringFilter: IFilter
 	{
-		public CryptingInfo<string> Info { get; set; }
+		public CryptingInfo<string, string> Info { get; set; }
 		public void Filter()
 		{
 

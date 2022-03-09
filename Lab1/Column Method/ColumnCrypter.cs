@@ -10,14 +10,14 @@ namespace Lab1.Column_Method
 {
 	public class ColumnCrypter: ICrypter
 	{
-		private readonly CryptingInfo<string> _cryptingInfo;
+		private readonly CryptingInfo<string, string> _cryptingInfo;
 
-		public ColumnCrypter(CryptingInfo<string> cryptingInfo)
+		public ColumnCrypter(CryptingInfo<string, string> cryptingInfo)
 		{
 			_cryptingInfo = cryptingInfo;
 		}
 
-		public string CryptData()
+		public object CryptData()
 		{
 			var sortedKey = SortKey(_cryptingInfo.Key, _cryptingInfo.Alphabet);
 
@@ -41,7 +41,7 @@ namespace Lab1.Column_Method
 			return cryptedString.ToString();
 		}
 
-		public string DecryptData()
+		public object DecryptData()
 		{
 			int arrHigh = (int)Math.Ceiling((double)_cryptingInfo.Source.Length / _cryptingInfo.Key.Length);
 			char[,] letters = new char[arrHigh, _cryptingInfo.Key.Length];

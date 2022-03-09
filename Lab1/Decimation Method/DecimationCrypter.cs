@@ -10,14 +10,14 @@ namespace Lab1.Decimation_Method
 {
 	public class DecimationCrypter : ICrypter
 	{
-		private readonly CryptingInfo<int> _cryptingInfo;
+		private readonly CryptingInfo<string, int> _cryptingInfo;
 
-		public DecimationCrypter(CryptingInfo<int> cryptingInfo)
+		public DecimationCrypter(CryptingInfo<string, int> cryptingInfo)
 		{
 			_cryptingInfo = cryptingInfo;
 		}
 
-		public string CryptData()
+		public object CryptData()
 		{
 			var builder = new StringBuilder(_cryptingInfo.Source.Length);
 
@@ -30,7 +30,7 @@ namespace Lab1.Decimation_Method
 			return builder.ToString();
 		}
 
-		public string DecryptData()
+		public object DecryptData()
 		{
 			var builder = new StringBuilder(_cryptingInfo.Source.Length);
 

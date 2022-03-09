@@ -10,14 +10,14 @@ namespace Lab1.Vigenere_Method
 {
 	public class VigenereCrypter : ICrypter
 	{
-		private readonly CryptingInfo<string> _cryptingInfo;
+		private readonly CryptingInfo<string, string> _cryptingInfo;
 
-		public VigenereCrypter(CryptingInfo<string> cryptingInfo)
+		public VigenereCrypter(CryptingInfo<string, string> cryptingInfo)
 		{
 			_cryptingInfo = cryptingInfo;
 		}
 
-		public string CryptData()
+		public object CryptData()
 		{
 			var builder = new StringBuilder(_cryptingInfo.Source.Length);
 
@@ -30,7 +30,7 @@ namespace Lab1.Vigenere_Method
 			return builder.ToString();
 		}
 
-		public string DecryptData()
+		public object DecryptData()
 		{
 			var builder = new StringBuilder(_cryptingInfo.Source.Length);
 
