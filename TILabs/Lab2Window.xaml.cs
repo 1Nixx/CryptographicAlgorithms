@@ -140,7 +140,11 @@ namespace TILabs
 			var bits = new BitArray(data);
 			var builder = new StringBuilder(bits.Length);
 			for (int i = 0; i < bits.Length; i++)
+			{
 				builder.Append(bits[i].GetHashCode());
+				if ((i + 1) % 8 == 0)
+					builder.Append(' ');
+			}
 			
 			return builder.ToString();
 		}

@@ -15,6 +15,12 @@ namespace Core.Models
 			Source = source;
 		}
 
+		public CryptingInfo(TKey key, TSource source)
+		{
+			Key = key;
+			Source = source;
+		}
+
 		public string? Alphabet { get; set; }
 
 		public TKey Key { get; set; }
