@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3.Elgamal_Method
 {
-	internal class ElgamalKey
+	public class ElgamalKey
 	{
 		public int P { get; set; }
 		public int G { get; set; }
