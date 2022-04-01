@@ -17,7 +17,7 @@ namespace Core.Models
 
 		public ICrypter? Crypter { get; set; }
 
-		private CryptingInfo<TSource, TKey> CryptingInfo { get; set; }
+		public CryptingInfo<TSource, TKey> CryptingInfo { get; set; }
 
 		public Cryptographer(string alphabet, TKey key, TSource source)
 		{

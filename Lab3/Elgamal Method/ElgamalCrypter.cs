@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lab3.Elgamal_Method
 {
-	internal class ElgamalCrypter : ICrypter
+	public class ElgamalCrypter : ICrypter
 	{
 		private readonly CryptingInfo<byte[], ElgamalKey> _cryptingInfo;
 

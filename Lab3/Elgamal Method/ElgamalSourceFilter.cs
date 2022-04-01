@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab3.Elgamal_Method
 {
-	internal class ElgamalSourceFilter : IFilter
+	public class ElgamalSourceFilter : IFilter
 	{
 		public CryptingInfo<byte[], ElgamalSourceKey> SourceData { get; set; }
 		public CryptingInfo<byte[], ElgamalKey> DataResult { get; set; }

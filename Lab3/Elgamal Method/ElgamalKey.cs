@@ -9,7 +9,7 @@ namespace Lab3.Elgamal_Method
 	public class ElgamalKey
 	{
 		public int P { get; set; }
-		public int G { get; set; }
+		public int? G { get; set; }
 		public int Y { get; set; }
 
 		public int X { get; set; }

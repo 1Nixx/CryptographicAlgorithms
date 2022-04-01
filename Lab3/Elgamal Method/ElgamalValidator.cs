@@ -27,9 +27,10 @@ namespace Lab3.Elgamal_Method
 			if (!IsCoprime(DataResult.Key.K, DataResult.Key.P - 1))
 				throw new ArgumentException("Key: K is not coprime P");
 
-			DataResult.Key.G = GetOpenKey(DataResult.Key.P).First();
+			if (!DataResult.Key.G.HasValue)
+				DataResult.Key.G = GetOpenKey(DataResult.Key.P).First();
 
-			DataResult.Key.Y = (int)BigInteger.ModPow(DataResult.Key.G, DataResult.Key.X, DataResult.Key.P);
+			DataResult.Key.Y = (int)BigInteger.ModPow(DataResult.Key.G.Value, DataResult.Key.X, DataResult.Key.P);
 		}
 
 		private static bool IsCoprime(int num1, int num2)

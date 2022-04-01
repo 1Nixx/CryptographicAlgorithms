@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lab2.LFSR_Method;
+using Lab3.Elgamal_Method;
 
 namespace Infrastructure
 {
@@ -78,6 +79,24 @@ namespace Infrastructure
 			_builder.BuildValidator(new LFSRValidator() { KeyResult = resultInfo, SourceData = sourceInfo });
 
 			_builder.BuildСrypter(new LFSRCrypter(resultInfo));
+		}
+
+		public void ConstructElgamalMethod(string pKey, string xKey, string kKey, byte[] sourceData)
+		{
+			var sourceKey = new ElgamalSourceKey() { K = kKey, P = pKey, X = xKey };
+			var sourceInfo = new CryptingInfo<byte[], ElgamalSourceKey>(sourceKey, sourceData);
+			var resultKey = new ElgamalKey();
+			var resultInfo = new CryptingInfo<byte[], ElgamalKey>(resultKey, sourceData);
+
+			var cryptographer = new Cryptographer<byte[], ElgamalKey>(resultInfo);
+
+			_builder.CreateCryptographer(cryptographer);
+
+			_builder.BuildSourceFilter(new ElgamalSourceFilter() { DataResult = resultInfo, SourceData = sourceInfo });
+			_builder.BuildKeyFilter(new ElgamalKeyFilter() { DataResult = resultInfo, SourceData = sourceInfo });
+			_builder.BuildValidator(new ElgamalValidator() { DataResult = resultInfo, SourceData = sourceInfo});
+
+			_builder.BuildСrypter(new ElgamalCrypter(resultInfo));
 		}
 	}
 }
