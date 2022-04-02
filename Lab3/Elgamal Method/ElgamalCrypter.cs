@@ -25,7 +25,7 @@ namespace Lab3.Elgamal_Method
 			byte[] cryptedData = new byte[_cryptingInfo.Source.Length*itemSize*2];
 			for (int i = 0; i < _cryptingInfo.Source.Length; i++)
 			{
-				var a = BigInteger.ModPow(_cryptingInfo.Key.G, _cryptingInfo.Key.K, _cryptingInfo.Key.P).ToByteArray(isUnsigned: true);
+				var a = BigInteger.ModPow(_cryptingInfo.Key.G.Value, _cryptingInfo.Key.K, _cryptingInfo.Key.P).ToByteArray(isUnsigned: true);
 				var b = (BigInteger.Pow(_cryptingInfo.Key.Y, _cryptingInfo.Key.K) * _cryptingInfo.Source[i] % _cryptingInfo.Key.P).ToByteArray(isUnsigned: true);
 				
 				var aNumb = ConvertToStoreSize(a, itemSize);

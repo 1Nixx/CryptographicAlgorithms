@@ -34,9 +34,16 @@ namespace TILabs
 
 		private void btnTask2_Click(object sender, RoutedEventArgs e)
 		{
-			var lab1Window = new Lab2Window(this);
+			var lab2Window = new Lab2Window(this);
 			this.Hide();
-			lab1Window.Show();
+			lab2Window.Show();
+		}
+
+		private void btnTask3_Click(object sender, RoutedEventArgs e)
+		{
+			var lab3Window = new Lab3Window(this);
+			this.Hide();
+			lab3Window.Show();
 		}
 	}
 }
