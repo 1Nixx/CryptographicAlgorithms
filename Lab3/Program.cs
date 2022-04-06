@@ -23,27 +23,27 @@ class Program
 		//var list = ShiftRegister.GetXORElements("x^28+x^3+1");
 
 
-		//byte[] data = { 66, 83,  85,  73,  82 };
-		//var key = new ElgamalKey() { P = 431, X = 429, G = 7, K = 41, Y = 308 };
-		//var info = new CryptingInfo<byte[], ElgamalKey>(key, data);
-		//var crypter = new ElgamalCrypter(info);
-		//var result = (byte[])crypter.CryptData();
+		byte[] data = { 73 };
+		var key = new ElgamalKey() { P = 911, X = 7, G = 666, K = 11, Y = 221 };
+		var info = new CryptingInfo<byte[], ElgamalKey>(key, data);
+		var crypter = new ElgamalCrypter(info);
+		var result = (byte[])crypter.CryptData();
 
-		//var newInfo = new CryptingInfo<byte[], ElgamalKey>(key, result);
-		//var decrypter = new ElgamalCrypter(newInfo);
-		//var asd = (byte[])decrypter.DecryptData();
-		//Console.ReadLine();
+		var newInfo = new CryptingInfo<byte[], ElgamalKey>(key, result);
+		var decrypter = new ElgamalCrypter(newInfo);
+		var asd = (byte[])decrypter.DecryptData();
+		Console.ReadLine();
 
-		while (true)
-		{
-			int numb = int.Parse(Console.ReadLine());
-			
-			var res = ElgamalValidator.GetOpenKey(numb);
-			for (int i = 0; i < res.Count; i++)
-			{
-				Console.WriteLine($"{i} = {res[i]}");
-			}
-		}
-		
+		//while (true)
+		//{
+		//	int numb = int.Parse(Console.ReadLine());
+
+		//	var res = ElgamalValidator.GetOpenKey(numb);
+		//	for (int i = 0; i < res.Count; i++)
+		//	{
+		//		Console.WriteLine($"{i} = {res[i]}");
+		//	}
+		//}
+
 	}
 }

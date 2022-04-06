@@ -152,6 +152,24 @@ namespace TILabs
 					tbResult.Text = "";
 					_outputFile = null;
 					(_cryptographer as Cryptographer<byte[], ElgamalKey>).CryptingInfo.Key.G = (int)cbOpenKey.SelectedItem;
+					try
+					{
+						bool dataRes = _cryptographer.PrepareData();
+						if (!dataRes)
+						{
+							lbError.Content = "Ошибка в параметрах";
+							lbError.Visibility = Visibility.Visible;
+							_IsEnableToCrypt = false;
+							return;
+						}
+					}
+					catch (ArgumentException ex)
+					{
+						lbError.Content = ex.Message;
+						lbError.Visibility = Visibility.Visible;
+						_IsEnableToCrypt = false;
+						return;
+					}
 				}
 			}
 		}
