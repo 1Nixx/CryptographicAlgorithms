@@ -28,7 +28,14 @@ namespace Lab3.Elgamal_Method
 				throw new ArgumentException("Key: K is not coprime P");
 
 			if (!DataResult.Key.G.HasValue)
-				DataResult.Key.G = GetOpenKey(DataResult.Key.P).First();
+			{
+				var openKeys = GetOpenKey(DataResult.Key.P);
+				if (openKeys.Count == 0)
+					throw new ArgumentException("Key: P don't have original root");
+
+				DataResult.Key.G = openKeys.First();
+			}
+				
 
 			DataResult.Key.Y = (int)BigInteger.ModPow(DataResult.Key.G.Value, DataResult.Key.X, DataResult.Key.P);
 		}
@@ -54,26 +61,44 @@ namespace Lab3.Elgamal_Method
 	
 		public static List<int> GetOpenKey(int pKey)
 		{
-			var primeDiv = GetPrimeDiv(pKey - 1);
+			var phiFunc = CalcEulerFunc(pKey);
 
 			var result = new List<int>();
+			var modSet = new HashSet<int>();
 			for (int i = 1; i <= pKey - 1; i++)
 			{
-				bool IsDiv = false;
-				foreach (var numb in primeDiv)
+				bool IsError = false;
+				for (int j = 1; j <= phiFunc; j++)
 				{
-					var divRes = BigInteger.ModPow(i, (pKey - 1) / numb, pKey);
-					if (divRes == 1)
+					var modRes = BigInteger.ModPow(i, j, pKey);
+
+					if (modRes == 0 || modSet.Contains((int)modRes))
 					{
-						IsDiv = true;
+						IsError = true;
 						break;
 					}
+					else
+						modSet.Add((int)modRes);
 				}
-				if (!IsDiv)
+
+				if (!IsError)
 					result.Add(i);
+
+				modSet.Clear();
 			}
 
 			return result;	
+		}
+
+		private static int CalcEulerFunc(int pKey)
+		{
+			int counter = 0;
+			for (int i = 1; i <= pKey - 1; i++)
+			{
+				if (IsCoprime(i, pKey))
+					counter++;
+			}
+			return counter;
 		}
 
 		private static ICollection<int> GetPrimeDiv(int sourceNumb)

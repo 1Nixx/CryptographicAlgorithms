@@ -49,7 +49,7 @@ namespace Lab3.Elgamal_Method
 				byte[] b = _cryptingInfo.Source.Skip(i * 2 * itemSize + itemSize).Take(itemSize).ToArray();
 
 				var modPow = new BigInteger(b, isUnsigned: true) * BigInteger.ModPow(new BigInteger(a, isUnsigned: true), _cryptingInfo.Key.P - 1 - _cryptingInfo.Key.X, _cryptingInfo.Key.P);
-				byte m = (byte) (modPow % _cryptingInfo.Key.P);
+				byte m = (byte)(modPow % _cryptingInfo.Key.P).ToByteArray(isUnsigned: true)[0];
 			 
 				decryptedData[i] = m;
 			}
