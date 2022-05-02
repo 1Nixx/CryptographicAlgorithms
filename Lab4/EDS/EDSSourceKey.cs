@@ -11,5 +11,6 @@ namespace Lab4.EDS
 		public string P { get; set; }
 		public string Q { get; set; }
 		public string D { get; set; }
+		public string? EDS { get; set; }
 	}
 }

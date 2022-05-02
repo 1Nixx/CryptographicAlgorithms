@@ -98,5 +98,10 @@ namespace Infrastructure
 
 			_builder.BuildСrypter(new ElgamalCrypter(resultInfo));
 		}
+	
+		public void ConstructEDSmethod(string pKey, string qKey, string dKey, string? EDS, string sourceText)
+		{
+
+		}
 	}
 }
