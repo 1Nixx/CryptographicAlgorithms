@@ -1,0 +1,72 @@
+﻿<Window x:Class="TILabs.Lab4Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:TILabs"
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
+        Title="Lab4Window" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="#C9F5C2" >
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbPkey" Grid.Column="0" materialDesign:HintAssist.Hint="P" FontSize="18" Width="Auto" VerticalAlignment="Center" Height="30" Margin="0,0,5,5"/>
+                    <TextBox x:Name="tbQKey" Grid.Column="1"  materialDesign:HintAssist.Hint="Q" FontSize="18" Width="Auto"  VerticalAlignment="Center" Height="30" Margin="0,0,0,5"/>
+                    <TextBox x:Name="tbDKey" Grid.Row="1" Grid.Column="0"  materialDesign:HintAssist.Hint="D" FontSize="18" VerticalAlignment="Center" Height="30" Grid.ColumnSpan="2"/>
+                </Grid>
+
+                <Button x:Name="btnCrypt" Content="Зашифровать" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5" Click="btnCrypt_Click" />
+                <Button x:Name="btnDecrypt" Content="Расшифровать" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5" Click="btnDecrypt_Click" />
+                <Button x:Name="btnLoadFromFile" Content="Открыть файл" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5" Background="#3C988E" BorderBrush="#3C988E" Click="btnLoadFromFile_Click"/>
+                <Button x:Name="btnSaveToFile" Content="Сохранить в файл" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5" Background="#3C988E" BorderBrush="#3C988E" Click="btnSaveToFile_Click" />
+                <Label x:Name="lbError" FontSize="18" Foreground="Red" FontWeight="Bold" Visibility="Hidden" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="5"/>
+                <Button x:Name="btnExit" Style="{StaticResource MaterialDesignToolButton}" Height="30" Click="btnExit_Click" Margin="0 70 0 0">
+                    <materialDesign:PackIcon Kind="ExitRun" Width="25" Height="25" Foreground="#FF673AB7"/>
+                </Button>
+            </StackPanel>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="White">
+            <TextBox x:Name="tbSource" IsReadOnly="True" AcceptsReturn="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                     FontSize="19" materialDesign:HintAssist.Hint="Исходный текст" materialDesign:HintAssist.Foreground="AntiqueWhite" 
+                     Margin="5" TextWrapping="Wrap"/>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Background="White">
+            <Grid Margin="5" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label FontSize="15" Height="30">Text hash Code</Label>
+                    <TextBox x:Name="tbHashText" IsReadOnly="True"  TextWrapping="Wrap" materialDesign:HintAssist.Hint="Hash code" FontSize="15" Width="Auto" Margin="5,10,5,10" Height="150"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label FontSize="15" Height="30">EDS</Label>
+                    <TextBox x:Name="tbEDS" IsReadOnly="True"  TextWrapping="Wrap" materialDesign:HintAssist.Hint="EDS" FontSize="15" Width="Auto" Margin="5,10,5,10" Height="150"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <Label FontSize="15" Height="30">Open key</Label>
+                    <TextBox x:Name="tbOpenKey" IsReadOnly="True"  TextWrapping="Wrap" materialDesign:HintAssist.Hint="Open Key" FontSize="15" Width="Auto" Margin="5,10,5,10" Height="150"/>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</Window>

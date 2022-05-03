@@ -45,5 +45,12 @@ namespace TILabs
 			this.Hide();
 			lab3Window.Show();
 		}
+
+		private void btnTask4_Click(object sender, RoutedEventArgs e)
+		{
+			var lab4Window = new Lab4Window(this);
+			this.Hide();
+			lab4Window.Show();
+		}
 	}
 }

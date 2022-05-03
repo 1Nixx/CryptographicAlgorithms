@@ -26,8 +26,7 @@
             Click="btnTask3_Click" Width="278" Height="38" Margin="0,30,0,0" Padding="0"/>
         <Button x:Name="btnTask4" Content="Задание 4" HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center" FontSize="25" FontWeight="Normal"
-            Background="#FF9FB89B" BorderBrush="#FF9FB89B" Foreground="#FFA54149" 
-            Click="btnTask1_Click" Width="278" Height="38" Margin="0,30,0,0" Padding="0"/>
+            Background="#FF9FB89B" BorderBrush="#FF9FB89B" Foreground="#FFA54149" Width="278" Height="38" Margin="0,30,0,0" Padding="0" Click="btnTask4_Click"/>
 
 
     </StackPanel>

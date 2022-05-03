@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Lab2.LFSR_Method;
 using Lab3.Elgamal_Method;
+using Lab4.EDS;
 
 namespace Infrastructure
 {
@@ -99,9 +100,22 @@ namespace Infrastructure
 			_builder.BuildСrypter(new ElgamalCrypter(resultInfo));
 		}
 	
-		public void ConstructEDSmethod(string pKey, string qKey, string dKey, string? EDS, string sourceText)
+		public void ConstructEDSMethod(string pKey, string qKey, string dKey, string? EDS, string sourceText)
 		{
+			var sourceKey = new EDSSourceKey() { P = pKey, Q = qKey, D = dKey, EDS = EDS };
+			var sourceInfo = new CryptingInfo<string, EDSSourceKey>(sourceKey, sourceText);
+			var resultKey = new EDSKey();
+			var resultInfo = new CryptingInfo<string, EDSKey>(resultKey, sourceText);
 
+			var cryptographer = new Cryptographer<string, EDSKey>(resultInfo);
+
+			_builder.CreateCryptographer(cryptographer);
+
+			_builder.BuildSourceFilter(new EDSSourceFilter() { DataResult = resultInfo, SourceData = sourceInfo });
+			_builder.BuildKeyFilter(new EDSKeyFilter() { DataResult = resultInfo, SourceData = sourceInfo });
+			_builder.BuildValidator(new EDSValidator() { DataResult = resultInfo, SourceData = sourceInfo });
+
+			_builder.BuildСrypter(new EDSCrypter(resultInfo, HashCalculator.GetInstance()));
 		}
 	}
 }

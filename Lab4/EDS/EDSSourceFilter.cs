@@ -10,11 +10,11 @@ namespace Lab4.EDS
 {
 	public class EDSSourceFilter : IFilter
 	{
-		public CryptingInfo<byte[], EDSSourceKey> SourceData { get; set; }
-		public CryptingInfo<byte[], EDSKey> DataResult { get; set; }
+		public CryptingInfo<string, EDSSourceKey> SourceData { get; set; }
+		public CryptingInfo<string, EDSKey> DataResult { get; set; }
 		public void Filter()
 		{
-			if (SourceData.Source.Length == 0)
+			if (SourceData.Source is null)
 				throw new ArgumentException("Source data error");
 		}
 	}

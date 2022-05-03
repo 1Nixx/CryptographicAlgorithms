@@ -24,7 +24,7 @@ namespace Lab4.EDS
 			BigInteger r = _cryptingInfo.Key.Q * _cryptingInfo.Key.P;
 			var hash = _hashCalculator.CalculateHashCode(_cryptingInfo.Source, r);
 			BigInteger s = BigInteger.ModPow(hash, _cryptingInfo.Key.D, r);
-			return s;
+			return (hash, s, _cryptingInfo.Key.E);
 		}
 
 		public object DecryptData()
@@ -36,7 +36,7 @@ namespace Lab4.EDS
 			bool isValid = false;
 			if (s == hash)
 				isValid = true;
-			return isValid;
+			return (hash, isValid, _cryptingInfo.Key.E);
 		}
 	}
 }

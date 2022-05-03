@@ -11,8 +11,8 @@ namespace Lab4.EDS
 {
 	public class EDSValidator : IValidator
 	{
-		public CryptingInfo<byte[], EDSSourceKey> SourceData { get; set; }
-		public CryptingInfo<byte[], EDSKey> DataResult { get; set; }
+		public CryptingInfo<string, EDSSourceKey> SourceData { get; set; }
+		public CryptingInfo<string, EDSKey> DataResult { get; set; }
 
 		public void Validate()
 		{
@@ -21,7 +21,7 @@ namespace Lab4.EDS
 
 			var r = DataResult.Key.P * DataResult.Key.Q;
 			var phiFunc = CalcEulerFunc((int)r);
-			var E = CalculateOpenKey((int)r, phiFunc);
+			var E = inverse((int)DataResult.Key.D, phiFunc);
 
 			if ((E * DataResult.Key.D) % phiFunc != 1)
 				throw new ArgumentException("Key: e*d mod f != 1");
@@ -29,37 +29,49 @@ namespace Lab4.EDS
 			DataResult.Key.E = E;
 		}
 
-		private static int CalculateOpenKey(int rKey, int phiFunc)
+		void extended_euclid(long a, long b,out long x, out long y, out long d)
 		{
-			int result = 0;
-			var modSet = new HashSet<int>();
-			for (int i = 1; i <= rKey - 1; i++)
+			long q, r, x1, x2, y1, y2;
+
+			if (b == 0)
 			{
-				bool IsError = false;
-				for (int j = 1; j <= phiFunc; j++)
-				{
-					var modRes = BigInteger.ModPow(i, j, rKey);
 
-					if (modRes == 0 || modSet.Contains((int)modRes))
-					{
-						IsError = true;
-						break;
-					}
-					else
-						modSet.Add((int)modRes);
-				}
+				d = a; x = 1; y = 0;
 
-				if (!IsError)
-				{
-					result = i;
-					break;
-				}
+				return;
 			}
 
-			return result;
+			x2 = 1; x1 = 0; y2 = 0; y1 = 1;
+
+			while (b > 0)
+			{
+				q = a / b;
+				r = a - q * b;
+				x = x2 - q * x1;
+				y = y2 - q * y1;
+				a = b;
+				b = r;
+				x2 = x1;
+				x1 = x;
+				y2 = y1;
+				y1 = y;
+			}
+			d = a;
+			x = x2;
+			y = y2;
 		}
 
-        private static bool IsPrimeNumber(int x)
+		long inverse(long a, long n)
+		{
+			long d, x, y;
+
+			extended_euclid(a, n,out x,out y,out d);
+			if (d == 1) return x;
+			return 0;
+
+		}
+
+		private static bool IsPrimeNumber(int x)
         {
 			if (x < 2) 
 				return false;

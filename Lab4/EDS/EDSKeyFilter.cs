@@ -11,8 +11,8 @@ namespace Lab4.EDS
 {
 	public class EDSKeyFilter : IFilter
 	{
-		public CryptingInfo<byte[], EDSSourceKey> SourceData { get; set; }
-		public CryptingInfo<byte[], EDSKey> DataResult { get; set; }
+		public CryptingInfo<string, EDSSourceKey> SourceData { get; set; }
+		public CryptingInfo<string, EDSKey> DataResult { get; set; }
 		public void Filter()
 		{
 			try
