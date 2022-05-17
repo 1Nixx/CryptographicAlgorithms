@@ -23,6 +23,8 @@ namespace Lab4.EDS
 			var phiFunc = CalcEulerFunc((int)r);
 			var E = inverse((int)DataResult.Key.D, phiFunc);
 
+			if (E <= 1)
+				throw new ArgumentException("Key: E error");
 			if ((E * DataResult.Key.D) % phiFunc != 1)
 				throw new ArgumentException("Key: e*d mod f != 1");
 
