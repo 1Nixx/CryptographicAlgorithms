@@ -130,6 +130,8 @@ namespace TILabs
 					cbOpenKey.Items.Clear();
 					foreach (int key in keys)
 						cbOpenKey.Items.Add(key);
+					lbError.Content = keys.Count.ToString();
+					lbError.Visibility = Visibility.Visible;
 					cbOpenKey.SelectedIndex = 0;
 					cbOpenKey.IsEnabled = true;
 					_IsEnableToCrypt = true;

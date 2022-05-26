@@ -163,7 +163,7 @@ namespace TILabs
 			}
 
 
-			var result = ((BigInteger hash, bool EDSValid, BigInteger openKey))cryptographer.Decrypting();
+			var result = ((BigInteger hash, bool EDSValid, BigInteger openKey, BigInteger s))cryptographer.Decrypting();
 
 			tbEDS.Text = edsText;
 			tbHashText.Text = result.hash.ToString();
@@ -172,7 +172,7 @@ namespace TILabs
 			lbError.Visibility = Visibility.Visible;
 			lbError.Foreground = new SolidColorBrush(Colors.Black);
 			var message = result.EDSValid ? "Valid" : "Not valid";
-			lbError.Content = $"EDS - {message}";
+			lbError.Content = $"s - {result.s} EDS - {message}";
 		}
 
 		private string GetHashedString(string str, BigInteger hash)

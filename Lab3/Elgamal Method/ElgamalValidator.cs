@@ -16,6 +16,9 @@ namespace Lab3.Elgamal_Method
 
 		public void Validate()
 		{
+			if (!IsPrimeNumber(DataResult.Key.P))
+				throw new ArgumentException("Key: P");
+
 			if (DataResult.Key.P <= 1 || DataResult.Key.X <= 1 || DataResult.Key.K <= 1)
 				throw new ArgumentException("Key: less/eq than 1");
 
@@ -38,6 +41,16 @@ namespace Lab3.Elgamal_Method
 				
 
 			DataResult.Key.Y = (int)BigInteger.ModPow(DataResult.Key.G.Value, DataResult.Key.X, DataResult.Key.P);
+		}
+
+		private static bool IsPrimeNumber(int x)
+		{
+			if (x < 2)
+				return false;
+			for (int i = 2; i * i <= x; i++)
+				if ((x % i) == 0)
+					return false;
+			return true;
 		}
 
 		private static bool IsCoprime(int num1, int num2)
@@ -99,6 +112,29 @@ namespace Lab3.Elgamal_Method
 					counter++;
 			}
 			return counter;
+		}
+
+		private static List<int> GetOpenKeys(int pKey)
+		{
+			var divs = GetPrimeDiv(pKey);
+			List<int> result = new List<int>();
+			for (int i = 0; i < pKey; i++)
+			{
+				bool a = true;
+				foreach (var item in divs)
+				{
+					if (BigInteger.ModPow(i, CalcEulerFunc(pKey) / item, pKey) == 1 && BigInteger.ModPow(i, CalcEulerFunc(pKey), pKey) != 1)
+					{
+						a = false;
+						break;
+					}
+				}
+				if (a)
+				{
+					result.Add(i);
+				}
+			}
+			return result;
 		}
 
 		private static ICollection<int> GetPrimeDiv(int sourceNumb)

@@ -36,7 +36,7 @@ namespace Lab4.EDS
 			bool isValid = false;
 			if (s == hash)
 				isValid = true;
-			return (hash, isValid, _cryptingInfo.Key.E);
+			return (hash, isValid, _cryptingInfo.Key.E, s);
 		}
 	}
 }
