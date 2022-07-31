@@ -8,10 +8,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Lab1\Lab1.csproj" />
-    <ProjectReference Include="..\Lab2\Lab2.csproj" />
-    <ProjectReference Include="..\Lab3\Lab3.csproj" />
-    <ProjectReference Include="..\Lab4\Lab4.csproj" />
+    <ProjectReference Include="..\Task1\Task1.csproj" />
+    <ProjectReference Include="..\Task2\Task2.csproj" />
+    <ProjectReference Include="..\Task3\Task3.csproj" />
+    <ProjectReference Include="..\Task4\Task4.csproj" />
   </ItemGroup>
 
 </Project>
