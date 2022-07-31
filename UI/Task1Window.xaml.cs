@@ -66,11 +66,19 @@ namespace TILabs
 			}
 
 			var cryptographer = _builder.GetCryptographer();
-
-			bool dataRes = cryptographer.PrepareData();
-			if (!dataRes)
+			try
 			{
-				lbError.Content = "Ошибка в параметрах";
+				bool dataRes = cryptographer.PrepareData();
+				if (!dataRes)
+				{
+					lbError.Content = "Ошибка в параметрах";
+					lbError.Visibility = Visibility.Visible;
+					return;
+				}
+			}
+			catch (ArgumentException ex)
+			{
+				lbError.Content = ex.Message;
 				lbError.Visibility = Visibility.Visible;
 				return;
 			}
@@ -93,14 +101,23 @@ namespace TILabs
 			}
 
 			var cryptographer = _builder.GetCryptographer();
-
-			bool dataRes = cryptographer.PrepareData();
-			if (!dataRes)
+			try
 			{
-				lbError.Content = "Ошибка в параметрах";
+				bool dataRes = cryptographer.PrepareData();
+				if (!dataRes)
+				{
+					lbError.Content = "Ошибка в параметрах";
+					lbError.Visibility = Visibility.Visible;
+					return;
+				}
+			}
+			catch (ArgumentException ex)
+			{
+				lbError.Content = ex.Message;
 				lbError.Visibility = Visibility.Visible;
 				return;
 			}
+
 
 			string cryptedString = (string)cryptographer.Decrypting();
 			tbResult.Text = cryptedString;
